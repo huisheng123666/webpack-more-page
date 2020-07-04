@@ -35,19 +35,13 @@ const cssLoader = [
   }
 ]
 
-module.exports = {
+const config = {
   entry,
   output: {
     filename: 'js/[name][hash:8].js',
     path: path.resolve(__dirname, './dist'),
     chunkFilename: 'js/[name].[hash:8].js',
     publicPath: '/',
-  },
-  devServer: {
-    contentBase: path.relative(__dirname, './dist'),
-    hot: true,
-    port: 8000,
-    host: '0.0.0.0'
   },
   devtool: isProd ? 'cheap' : 'source-map',
   optimization: isProd ? {
@@ -107,3 +101,14 @@ module.exports = {
     new CopyPlugin()
   ].filter(Boolean)
 }
+
+if (!isProd) {
+  config.devServer = {
+    contentBase: path.relative(__dirname, './dist'),
+    hot: true,
+    port: 8000,
+    host: '0.0.0.0'
+  }
+}
+
+module.exports = config

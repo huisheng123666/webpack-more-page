@@ -1,6 +1,8 @@
 const fs = require('fs')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
+const isProd = process.env.NODE_ENV === 'production'
+
 const jsTem = `
 
 if (process.env.NODE_ENV === 'development') {
@@ -9,13 +11,33 @@ if (process.env.NODE_ENV === 'development') {
 
 `
 
+function getIPAdress() {
+  let interfaces = require('os').networkInterfaces();
+  for (var devName in interfaces) {
+    var iface = interfaces[devName];
+    for (var i = 0; i < iface.length; i++) {
+      let alias = iface[i];
+      if (alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal) {
+        return alias.address
+      }
+    }
+  }
+}
+
 class CopyPlugin {
   apply (compiler) {
-    compiler.hooks.afterEmit.tapAsync('done', (compilation, callback) => {
+    compiler.hooks.done.tapAsync('done', (compilation, callback) => {
       const staticFiles = fs.readdirSync('static')
       for (let i = 0; i < staticFiles.length; i++) {
         fs.copyFileSync(`static/${staticFiles[i]}`, `dist/${staticFiles[i]}`)
-        console.log(staticFiles[i])
+      }
+      if (!isProd) {
+        setTimeout(() => {
+          console.clear()
+          console.log('you can open!')
+          console.log('network:', `http://${getIPAdress()}:8000`)
+          console.log('local:', `http://localhost:8000`)
+        }, 100)
       }
       callback()
     })
