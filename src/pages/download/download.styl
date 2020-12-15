@@ -1,0 +1,209 @@
+vw(num)
+  round(num / 750, 4) * 100vw
+.layer
+  position fixed
+  left 0
+  right 0
+  top 0
+  bottom 0
+  background rgba(0, 0, 0, 0.7)
+  z-index 99999
+  display none
+  .arrow
+    position absolute
+    top vw(105)
+    right vw(64)
+    width vw(137)
+    height vw(160)
+  .tips
+    display block
+    width vw(329)
+    height vw(155)
+    margin 0 auto
+    margin-top vw(300)
+.swiper-container
+  width 100vw
+  height 100vh
+  .swiper-pagination
+    width 12px
+    .swiper-pagination-bullet
+      width 12px
+      margin 25px auto
+      height 40px
+      background #7D7884
+      opacity 1
+      border-radius 6px
+      transition all 0.2s
+      &.swiper-pagination-bullet-active
+        width 12px
+        height 67px
+        background #fff
+  .swiper-slide
+    width 100vw
+    display flex
+    align-items center
+    background url(img/one/pc-bg@2x.png) center center no-repeat
+    background-size cover
+    .h5
+      display none
+    .pc
+      width 1485px
+      margin-left 95px
+      display flex
+      align-items center
+      justify-content space-between
+      &>img
+        width 738px
+        height 788px
+      .download-right
+        .top
+          display flex
+          .logo-title
+            margin-right 39px
+            .logo
+              margin-bottom 19px
+              width 338px
+              height 169px
+            .title
+              margin-left 6px
+              display block
+              width 370px
+              height 68px
+          .code
+            &>img
+              width 302px
+              height 302px
+              margin-bottom 28px
+              border-radius 10px
+            &>p
+              text-align center
+              font-size 22px
+              color #CECECE
+        .download-link
+          margin-top 64px
+          display flex
+          justify-content space-between
+          &>a
+            width 292px
+            height 80px
+            line-height 80px
+            border-radius 40px
+            background linear-gradient(90deg,rgba(158,93,255,1),rgba(47,233,255,1))
+            text-align center
+            font-size 28px
+            color #FFFFFF
+            text-decoration none
+            &>img
+              width 50px
+              height 50px
+              margin-right 15px
+              vertical-align top
+              padding-top 15px
+    @media only screen and (max-width: 1600px)
+      .pc
+        width 1285px
+        margin 0 auto
+        &>img
+          width 615px
+          height 657px
+        .download-right
+          .top
+            .logo-title
+              margin-right 33px
+              .logo
+                margin-bottom 16px
+                width 282px
+                height 141px
+              .title
+                margin-left 6px
+                width 308px
+                height 57px
+            .code
+              &>img
+                width 250px
+                height 250px
+                margin-bottom 23px
+                border-radius 8px
+              &>p
+                font-size 18px
+          .download-link
+            margin-top 53px
+            &>a
+              width 243px
+              height 68px
+              line-height 68px
+              border-radius 34px
+              font-size 25px
+              &>img
+                width 42px
+                height 42px
+                margin-right 12px
+                padding-top 13px
+@media only screen and (max-width: 640px)
+  .swiper-container
+    width 100vw
+    height 100vh
+    .swiper-pagination
+      width vw(20)
+      .swiper-pagination-bullet
+        width vw(10)
+        margin vw(20) auto
+        height vw(10)
+        background #7D7884
+        opacity 1
+        border-radius 50%
+        transition all 0.2s
+        &.swiper-pagination-bullet-active
+          width vw(20)
+          height vw(20)
+          background #fff
+    .swiper-slide
+      display block
+      width 100vw
+      background url(img/one/h5-bg@2x.png) center center no-repeat
+      background-size cover
+      .pc
+        display none
+      .h5
+        display block
+        width 100vw
+        padding-top vw(17)
+        .logo
+          display block
+          width vw(209)
+          margin-left vw(27)
+          height vw(89)
+        .title
+          display block
+          width vw(370)
+          margin 0 auto
+          margin-top vw(29)
+          height vw(68)
+        .phone
+          display block
+          width vw(699)
+          height vw(788)
+          margin-top vw(39)
+          margin-bottom vw(36)
+        .two-phone
+          display block
+          width vw(723)
+          height vw(872)
+          margin 0 auto
+        .three-phone
+          display block
+          width vw(660)
+          height vw(872)
+          margin-left vw(33)
+        .download
+          display block
+          width vw(351)
+          margin 0 auto
+          height vw(68)
+          line-height vw(68)
+          border-radius vw(34)
+          background linear-gradient(90deg,rgba(158,93,255,1),rgba(47,233,255,1))
+          text-align center
+          font-size vw(30)
+          color #FFFFFF
+          text-decoration none

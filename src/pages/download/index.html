@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
+  <link rel="stylesheet" type="text/css" href="/css/swiper.min.css"/>
+  <script src="/js/swiper.min.js"></script>
+</head>
+<body>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="pc">
+          <img src="img/one/pc-phone@2x.png" alt="">
+          <div class="download-right">
+            <div class="top">
+              <div class="logo-title">
+                <img class="logo" src="img/one/logo@2x.png" alt="">
+                <img class="title" src="img/one/pc-title.png" alt="">
+              </div>
+              <div class="code">
+                <img src="../../common/imgs/code.png" alt="">
+                <p>扫描二维码下载钠斯直播APP</p>
+              </div>
+            </div>
+            <div class="download-link">
+              <a href="/">
+                <img src="img/one/android@2x.png" alt="">
+                <span>安卓下载</span>
+              </a>
+              <a href="/">
+                <img src="img/one/ios@2x.png" alt="">
+                <span>IOS下载</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="h5">
+          <img src="img/one/h5-logo@2x.png" alt="" class="logo">
+          <img src="img/one/pc-title.png" alt="" class="title">
+          <img src="img/one/h5-phone@2x.png" alt="" class="phone">
+          <a href="/" class="download h5-download">立即下载</a>
+        </div>
+      </div>
+      <div class="swiper-slide two">
+        <div class="pc">
+          <img src="img/two/pc-phone@2x.png" alt="">
+          <div class="download-right">
+            <div class="top">
+              <div class="logo-title">
+                <img class="logo" src="img/one/logo@2x.png" alt="">
+                <img class="title" src="img/two/title@2x.png" alt="">
+              </div>
+              <div class="code">
+                <img src="../../common/imgs/code.png" alt="">
+                <p>扫描二维码下载钠斯直播APP</p>
+              </div>
+            </div>
+            <div class="download-link">
+              <a href="/">
+                <img src="img/one/android@2x.png" alt="">
+                <span>安卓下载</span>
+              </a>
+              <a href="/">
+                <img src="img/one/ios@2x.png" alt="">
+                <span>IOS下载</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="h5">
+          <img src="img/one/h5-logo@2x.png" alt="" class="logo">
+          <img src="img/two/title@2x.png" alt="" class="title">
+          <img src="img/two/h5-phone@2x.png" alt="" class="two-phone">
+          <a href="/" class="download h5-download">立即下载</a>
+        </div>
+      </div>
+      <div class="swiper-slide three">
+        <div class="pc">
+          <img src="img/three/pc-phone@2x.png" alt="">
+          <div class="download-right">
+            <div class="top">
+              <div class="logo-title">
+                <img class="logo" src="img/one/logo@2x.png" alt="">
+                <img class="title" src="img/three/title.png" alt="">
+              </div>
+              <div class="code">
+                <img src="../../common/imgs/code.png" alt="">
+                <p>扫描二维码下载钠斯直播APP</p>
+              </div>
+            </div>
+            <div class="download-link">
+              <a href="/">
+                <img src="img/one/android@2x.png" alt="">
+                <span>安卓下载</span>
+              </a>
+              <a href="/">
+                <img src="img/one/ios@2x.png" alt="">
+                <span>IOS下载</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="h5">
+          <img src="img/one/h5-logo@2x.png" alt="" class="logo">
+          <img src="img/three/title.png" alt="" class="title">
+          <img src="img/three/h5-phone@2x.png" alt="" class="three-phone">
+          <a href="/" class="download h5-download">立即下载</a>
+        </div>
+      </div>
+    </div>
+    <!-- 如果需要分页器 -->
+    <div class="swiper-pagination"></div>
+  </div>
+  <div class="layer">
+    <img src="./img/jiantou@2x.png" alt="" class="arrow">
+    <img src="./img/zi@2x.png" alt="" class="tips">
+  </div>
+  <script>
+    var mySwiper = new Swiper ('.swiper-container', {
+      direction: 'vertical', // 垂直切换选项
+      // 如果需要分页器
+      pagination: {
+        el: '.swiper-pagination'
+      },
+      speed: 500,
+      height: window.innerHeight,
+      mousewheel: true
+    })
+
+    function isWeiXin(){
+      var ua = window.navigator.userAgent.toLowerCase();
+      if(ua.match(/MicroMessenger/i) == 'micromessenger' || ua.match(/QQ/i) == "qq"){
+        return true;
+      }else{
+        return false;
+      }
+    }
+
+    var layer = document.querySelector('.layer')
+
+    layer.addEventListener('click', function () {
+      layer.style.display = 'none'
+    })
+
+    function download(e) {
+      e.preventDefault()
+      if (!isWeiXin()) {
+        layer.style.display = 'block'
+      } else {
+        window.location.href = '/'
+      }
+    }
+
+    const h5Btns = document.querySelectorAll('.h5-download')
+    for (var i = 0; i < h5Btns.length; i++) {
+      (function (i) {
+        h5Btns[i].addEventListener('click', download)
+      })(i)
+    }
+  </script>
+</body>
+</html>

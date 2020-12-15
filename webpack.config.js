@@ -77,7 +77,7 @@ const config = {
           {
             loader: 'url-loader',
             options: {
-              limit: 1000,
+              limit: 0,
               name: 'img/[name]-[hash:8].[ext]'
             }
           }

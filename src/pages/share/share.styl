@@ -1,0 +1,119 @@
+vw(num)
+  round(num / 750, 4) * 100vw
+html
+  height 100%
+  width 100%
+  overflow hidden
+
+body
+  width 100vw
+  height 100%
+  overflow hidden
+  font-family Microsoft YaHei, PingFang SC !important
+  .prism-big-play-btn
+    display none !important
+  .prism-controlbar
+    display none !important
+  #player
+    width 100%
+    height 100%
+    background #000
+    z-index -1
+    video
+      object-fit cover
+  .user
+    position fixed
+    left vw(30)
+    top vw(10)
+    height vw(72)
+    display flex
+    align-items center
+    padding-right vw(10)
+    padding-left vw(7)
+    border-radius vw(36)
+    background-color rgba(0,0,0,0.2)
+    z-index 9999
+    .avatar
+      width vw(64)
+      height vw(64)
+      border-radius 50%
+    .info
+      margin-left vw(11)
+      margin-right vw(9)
+      width vw(161)
+      &>p
+        white-space nowrap
+        overflow hidden
+        text-overflow ellipsis
+        font-size vw(24)
+        color #FFFFFF
+      &>span
+        font-size vw(20)
+        color #FFFFFF
+        &>img
+          margin-right vw(8)
+          width vw(14)
+          height vw(17)
+    .heart
+      width vw(55)
+      height vw(55)
+  .play
+    width vw(118)
+    height vw(118)
+    position fixed
+    left 50%
+    top 50%
+    transform translate3d(-50%, -50%, 0)
+    z-index 9999
+  .footer
+    position fixed
+    left 0
+    bottom 0
+    width 100%
+    height vw(246)
+    display flex
+    justify-content space-between
+    align-items center
+    box-sizing border-box
+    padding-top vw(121)
+    background url(./img/bg@2x.png) center center no-repeat
+    background-size cover
+    z-index 9999
+    &>img
+      width vw(279)
+      height vw(93)
+      margin-left vw(40)
+    &>a
+      padding 0 vw(20)
+      height vw(67)
+      line-height vw(67)
+      margin-right 32px
+      border-radius vw(34)
+      background linear-gradient(98deg,rgba(12,240,222,1),rgba(119,92,232,1))
+      outline none
+      border none
+      text-align center
+      text-decoration none
+      font-size vw(26)
+      color #FFFFFF
+  .layer
+    position fixed
+    left 0
+    right 0
+    top 0
+    bottom 0
+    background rgba(0, 0, 0, 0.7)
+    z-index 99999
+    display none
+    .arrow
+      position absolute
+      top vw(105)
+      right vw(64)
+      width vw(137)
+      height vw(160)
+    .tips
+      display block
+      width vw(329)
+      height vw(155)
+      margin 0 auto
+      margin-top vw(300)

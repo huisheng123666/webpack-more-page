@@ -29,7 +29,13 @@ class CopyPlugin {
     compiler.hooks.done.tapAsync('done', (compilation, callback) => {
       const staticFiles = fs.readdirSync('static')
       for (let i = 0; i < staticFiles.length; i++) {
-        fs.copyFileSync(`static/${staticFiles[i]}`, `dist/${staticFiles[i]}`)
+        if (staticFiles[i].indexOf('js') >= 0) {
+          fs.copyFileSync(`static/${staticFiles[i]}`, `dist/js/${staticFiles[i]}`)
+        } else if (staticFiles[i].indexOf('css') >= 0) {
+          fs.copyFileSync(`static/${staticFiles[i]}`, `dist/css/${staticFiles[i]}`)
+        } else {
+          fs.copyFileSync(`static/${staticFiles[i]}`, `dist/${staticFiles[i]}`)
+        }
       }
       if (!isProd) {
         setTimeout(() => {
@@ -55,7 +61,7 @@ const genPages = () => {
     const jsPath = `${dirPath}/${files[i]}/index.js`
     entry[files[i]] = jsPath
     htmls.push(new HtmlWebpackPlugin({
-      filename: files[i] !== 'index' ? `${files[i]}/index.html` : 'index.html',
+      filename: `${files[i]}.html`,
       chunks: [files[i], 'common'],
       template: `./src/pages/${files[i]}/index.html`,
       inject: true,

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
+  <script src="//imgcache.qq.com/open/qcloud/video/vcplayer/TcPlayer-2.3.3.js" charset="utf-8"></script>
+  <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+</head>
+<body>
+  <div id="player"></div>
+  <div class="user">
+    <img src="https://meet1v1-1300631461.cos.ap-shanghai.myqcloud.com/images/2019122510325084859timg%20%282%29.jpg" alt="" class="avatar">
+    <div class="info">
+      <p>小小小小语小小小小语</p>
+      <span><img src="./img/hot@2x.png" alt="">1023</span>
+    </div>
+    <img class="heart" src="./img/button_guanzhu@2x.png" alt="">
+  </div>
+  <img src="./img/play@2x.png" alt="" id="play_btn" class="play">
+  <div class="footer">
+    <img src="./img/logo@2x.png" alt="">
+    <a href="download.html" id="download_btn">在APP中打开</a>
+  </div>
+  <script>
+    (function () {
+      var playBtn = document.getElementById('play_btn')
+      var player = new TcPlayer('player', {
+        width: '100%',
+        height: '100%',
+        poster: 'https://live-1300631461.cos.ap-shanghai.myqcloud.com/images/2020060317035882193%2865B41%29.jpg',
+        controls: 'none',
+        autoplay: false,
+        rePlay: true,
+        x5_video_position: 'center',
+        x5_type: 'h5',
+        mp4: 'https://1300631461.vod2.myqcloud.com/91d46a3bvodcq1300631461/a0aef4825285890805201950145/AGjjImS3ar0A.mp4'
+      })
+
+      document.addEventListener('WeixinJSBridgeReady', function () {
+        player.play()
+        setTimeout(() => {
+          if (player.playing()) {
+            playBtn.style.display = 'none'
+          }
+        }, 200)
+      })
+      document.body.addEventListener('touchstart', function () {
+        player.play()
+        playBtn.style.display = 'none'
+      })
+    })()
+  </script>
+</body>
+</html>
